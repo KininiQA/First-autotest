@@ -16,30 +16,30 @@ class TestRozetka():
     self.driver.quit()
   
   def test_rozetka(self):
-    self.Open_main_page()
+    self.Open_main_page(Открытие_ссылки="https://rozetka.com.ua/")
     self.Open_page_in_full_mode()
-    self.Find_platu_via_searching_filed()
-    self.Scroll_and_find_matpaltu_via_searching_filed()
+    self.Find_platu_via_searching_filed(Поиск_1="Видеокарты")
+    self.Scroll_and_find_matpaltu_via_searching_filed(Поиск_2="Материнские платы")
     self.Close_page()
 
 
-  def Open_main_page(self):
-    self.driver.get("https://rozetka.com.ua/")
+  def Open_main_page(self, Открытие_ссылки):
+    self.driver.get(Открытие_ссылки)
 
   def Open_page_in_full_mode(self):
     self.driver.set_window_size(1936, 1066)
 
-  def Find_platu_via_searching_filed(self):
+  def Find_platu_via_searching_filed(self, Поиск_1):
     self.driver.find_element(By.NAME, "search").click()
-    self.driver.find_element(By.NAME, "search").send_keys("видеокарты")
+    self.driver.find_element(By.NAME, "search").send_keys(Поиск_1)
     self.driver.find_element(By.NAME, "search").send_keys(Keys.ENTER)
 
-  def Scroll_and_find_matpaltu_via_searching_filed(self):
+  def Scroll_and_find_matpaltu_via_searching_filed(self, Поиск_2):
     self.driver.execute_script("window.scrollTo(0,6)")
     self.driver.execute_script("window.scrollTo(0,997)")
     self.driver.execute_script("window.scrollTo(0,1593)")
     self.driver.find_element(By.NAME, "search").click()
-    self.driver.find_element(By.NAME, "search").send_keys("материнские платы")
+    self.driver.find_element(By.NAME, "search").send_keys(Поиск_2)
     self.driver.find_element(By.NAME, "search").send_keys(Keys.ENTER)
 
   def Close_page(self):
