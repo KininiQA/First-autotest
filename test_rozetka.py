@@ -22,8 +22,17 @@ class TestRozetka():
     self.Scroll_and_find_matpaltu_via_searching_filed()
     self.Close_page()
 
-  def Close_page(self):
-    self.driver.close()
+
+  def Open_main_page(self):
+    self.driver.get("https://rozetka.com.ua/")
+
+  def Open_page_in_full_mode(self):
+    self.driver.set_window_size(1936, 1066)
+
+  def Find_platu_via_searching_filed(self):
+    self.driver.find_element(By.NAME, "search").click()
+    self.driver.find_element(By.NAME, "search").send_keys("видеокарты")
+    self.driver.find_element(By.NAME, "search").send_keys(Keys.ENTER)
 
   def Scroll_and_find_matpaltu_via_searching_filed(self):
     self.driver.execute_script("window.scrollTo(0,6)")
@@ -33,14 +42,11 @@ class TestRozetka():
     self.driver.find_element(By.NAME, "search").send_keys("материнские платы")
     self.driver.find_element(By.NAME, "search").send_keys(Keys.ENTER)
 
-  def Find_platu_via_searching_filed(self):
-    self.driver.find_element(By.NAME, "search").click()
-    self.driver.find_element(By.NAME, "search").send_keys("видеокарты")
-    self.driver.find_element(By.NAME, "search").send_keys(Keys.ENTER)
+  def Close_page(self):
+    self.driver.close()
 
-  def Open_page_in_full_mode(self):
-    self.driver.set_window_size(1936, 1066)
 
-  def Open_main_page(self):
-    self.driver.get("https://rozetka.com.ua/")
+
+
+
   
